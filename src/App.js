@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    getpeoplelist = () => {
+        axios
+            .get("http://localhost:8000/sampleapi/people/")
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => console.log(err));
+    };
+
+    insertpeople = () => {
+
+    }
+
+    render() {
+        return (
+            <main>
+                This is main
+                <button onClick={this.getpeoplelist}>
+                    GET
+                </button>
+                <button onClick={this.insertpeople}>
+                    POST
+                </button>
+            </main>
+        );
+    }
 }
 
 export default App;
