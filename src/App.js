@@ -1,21 +1,20 @@
-import React, { Component } from "react";
+import React, { useState } from 'react';
 import axios from "axios";
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-    }
+function App() {
+    const [users, setUsers] = useState(null);
 
-    getpeoplelist = () => {
+    const getpeoplelist = () => {
         axios
             .get("http://203.250.32.193:8000/sampleapi/people/")
-            .then((res) => {
-                console.log(res)
+            .then(res => {
+                setUsers(res.data)
+                setLoading(true)
             })
             .catch((err) => console.log(err));
     };
 
-    insertpeople = () => {
+    const insertpeople = () => {
         const person = {
             name: "POST TEST",
             birth_year: "1945",
@@ -30,19 +29,25 @@ class App extends Component {
             .catch((err) => console.log(err));
     }
 
-    render() {
-        return (
-            <main>
-                This is main
-                <button onClick={this.getpeoplelist}>
-                    GET
-                </button>
-                <button onClick={this.insertpeople}>
-                    POST
-                </button>
-            </main>
-        );
-    }
+    return (
+        <main>
+            This is main
+            <button onClick={getpeoplelist}>
+                GET
+            </button>
+            <button onClick={insertpeople}>
+                POST
+            </button>
+            <div>
+                example
+            </div>
+            <div>
+                <div>{ users && users[0].name }</div>
+                <div>{ users && users[0].birth_year }</div>
+                <div>{ users && users[0].eye_color }</div>
+            </div>
+        </main>
+    );
 }
 
 export default App;
