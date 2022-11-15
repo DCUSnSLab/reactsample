@@ -28,3 +28,6 @@ https://bohyeon-n.github.io/deploy/web/cors.html
 https://yooloo.tistory.com/150
 https://jsikim1.tistory.com/158
 https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
+
+프론트엔드, 백엔드 프레임워크별 예시
+https://jasonwatmore.com/post/2020/07/17/react-axios-http-post-request-examples
